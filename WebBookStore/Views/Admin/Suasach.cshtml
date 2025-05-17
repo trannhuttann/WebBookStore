@@ -1,0 +1,142 @@
+﻿@model WebBookStore.Models.SACH
+
+@{
+    ViewBag.Title = "Chỉnh sửa sách";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="text-center font-weight-light my-4">CHỈNH SỬA THÔNG TIN SÁCH</h3>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaSach)
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.TenSach, "Tên sách", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.GiaBan, "Giá bán", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", rows = "3" })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.AnhBia, "Ảnh bìa", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        <div class="custom-file">
+                            <input type="file" name="fileupload" id="fileupload" class="custom-file-input" />
+                            <label class="custom-file-label" for="fileupload">Chọn ảnh mới</label>
+                        </div>
+                        <div class="mt-2">
+                            <img src="@Url.Content("~/product_imgs/" + Model.AnhBia)" alt="Ảnh hiện tại" class="img-thumbnail" style="max-width: 200px;" />
+                        </div>
+                        @ViewBag.Thongbao
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.NgayCapNhat, "Ngày cập nhật", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.NgayCapNhat, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.NgayCapNhat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.SoLuongTon, "Số lượng tồn", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.MaCD, "Chủ đề", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.DropDownList("MaCD", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaCD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.MaNXB, "Nhà xuất bản", new { @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-9">
+                        @Html.DropDownList("MaNXB", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaNXB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-9 offset-sm-3">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                        <a href="@Url.Action("Sach")" class="btn btn-secondary ms-2">Quay lại</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+        }
+
+    .card-header {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        border-bottom: none;
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #e65100;
+            border-color: #e65100;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+</style>

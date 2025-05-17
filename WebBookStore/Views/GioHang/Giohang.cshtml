@@ -1,0 +1,72 @@
+﻿@using WebBookStore.Models;
+@model List<Giohang>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Thông Tin Giỏ Hàng</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="~/product_imgs/@item.sAnhbia" alt="@item.sTensach" class="img-thumbnail mr-3" style="width: 60px;">
+                                <div>
+                                    <h6 class="mb-0">@item.sTensach</h6>
+                                    <small class="text-muted">Mã: @item.iMasach</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@String.Format("{0:0,0} VNĐ", item.dDongia)</td>
+                        <td>
+                            @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { iMaSP = item.iMasach }, FormMethod.Post, new { @class = "form-inline" }))
+                            {
+                                <div class="form-group">
+                                    <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" class="form-control form-control-sm mr-2" style="width: 60px;">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm">Cập nhật</button>
+                                </div>
+                            }
+                        </td>
+                        <td>@String.Format("{0:0,0} VNĐ", item.dThanhtien)</td>
+                        <td>
+                            <a href="@Url.Action("Details", "BookStore", new { id = item.iMasach })" class="btn btn-info btn-sm">Chi tiết</a>
+                            @Html.ActionLink("Xóa", "XoaGiohang", new { iMaSP = item.iMasach }, new { @class = "btn btn-danger btn-sm ml-2" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="card-title">Tổng số lượng: <span class="font-weight-bold">@ViewBag.Tongsoluong</span></h5>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <h5 class="card-title">Tổng tiền: <span class="font-weight-bold text-danger">@String.Format("{0:0,0} VNĐ", ViewBag.Tongtien)</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Dathang", "GioHang")" class="btn btn-primary btn-lg">Đặt Hàng</a>
+    </div>
+</div>

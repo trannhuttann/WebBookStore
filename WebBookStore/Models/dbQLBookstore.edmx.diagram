@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="234bfac2a7e7467d82b1681b03d2cff1" Name="Diagram1">
+        <EntityTypeShape EntityType="QLBANSACHModel.ADMIN" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.CHUDE" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.DONDATHANG" Width="1.5" PointX="4.125" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.KHACHHANG" Width="1.5" PointX="7.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.NHAXUATBAN" Width="1.5" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.SACH" Width="1.5" PointX="2.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.TACGIA" Width="1.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANSACHModel.VIETSACH" Width="1.5" PointX="5.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="QLBANSACHModel.Fk_ChuDe" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANSACHModel.Fk_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANSACHModel.Fk_NhaXuatBan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANSACHModel.Fk_TacGia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLBANSACHModel.ChiTietDH" Width="1.5" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="QLBANSACHModel.sysdiagram" Width="1.5" PointX="2.25" PointY="4.75" />
+        <EntityTypeShape EntityType="QLBANSACHModel.ThanhVien" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="QLBANSACHModel.FK_ADMIN_ThanhVien" />
+        <AssociationConnector Association="QLBANSACHModel.FK_DONDATHANG_ChiTietDH" />
+        <AssociationConnector Association="QLBANSACHModel.FK_ThanhVien_KhachHang" />
+        <AssociationConnector Association="QLBANSACHModel.FK_SACH_KHACHHANG" />
+        <AssociationConnector Association="QLBANSACHModel.FK_SACH_TACGIA" />
+        <AssociationConnector Association="QLBANSACHModel.FK_ChiTietDH_Sach" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

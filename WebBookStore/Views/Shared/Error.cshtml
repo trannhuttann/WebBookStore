@@ -1,0 +1,8 @@
+﻿@* Views/Shared/Error.cshtml *@
+@{
+    ViewBag.Title = "Lỗi";
+}
+
+<h2>Đã xảy ra lỗi</h2>
+<p>@ViewBag.ErrorMessage</p>
+<p><a href="@Url.Action("Index", "Home")">Trở về trang chủ</a></p>

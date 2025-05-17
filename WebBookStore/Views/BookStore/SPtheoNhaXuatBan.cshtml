@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebBookStore.Models.SACH>
+@{
+    ViewBag.Title = "SÁCH THEO NHÀ XUẤT BẢN";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var random = new Random();
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4" style="color: var(--primary-color);">SÁCH THEO NHÀ XUẤT BẢN</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var sach in Model)
+        {
+            var starRating = random.Next(1, 6);
+            var reviewCount = random.Next(1, 51);
+
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="~/product_imgs/@sach.AnhBia" class="card-img-top" alt="@sach.TenSach">
+                    <div class="card-body">
+                        <h5 class="card-title">@sach.TenSach</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="ratings">
+                                @for (int i = 0; i < starRating; i++)
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                                @for (int i = starRating; i < 5; i++)
+                                {
+                                    <i class="far fa-star text-warning"></i>
+                                }
+                                <span class="ms-2 text-muted">(@reviewCount đánh giá)</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="@Url.Action("Details", "BookStore", new { id = sach.MaSach })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
+                            @if (sach.SoLuongTon > 0)
+                            {
+                                <span class="text-success">Số Lượng Tồn @sach.SoLuongTon</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Hết hàng</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+        }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1rem;
+        height: 2.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .ratings {
+        font-size: 0.9rem;
+    }
+</style>

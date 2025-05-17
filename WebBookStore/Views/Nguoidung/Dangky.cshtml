@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<table align="center">
+    <h2>ĐĂNG KÝ THÀNH VIÊN</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @using (Html.BeginForm("Dangky", "Nguoidung", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <tr style="height:40px">
+            <td>Họ tên khách hàng :</td>
+            <td>
+                @Html.TextBox("HotenKH", null, new { @class = "form-control" })
+                @if (ViewData["Loi1"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi1"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Tên đăng ký :</td>
+            <td>
+                @Html.TextBox("TenDN", null, new { @class = "form-control" })
+                @if (ViewData["Loi2"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi2"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Mật khẩu :</td>
+            <td>
+                @Html.Password("Matkhau", null, new { @class = "form-control" })
+                @if (ViewData["Loi3"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi3"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Nhập lại mật khẩu :</td>
+            <td>
+                @Html.Password("Matkhaunhaplai", null, new { @class = "form-control" })
+                @if (ViewData["Loi4"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi4"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Email :</td>
+            <td>
+                @Html.TextBox("Email", null, new { @class = "form-control" })
+                @if (ViewData["Loi5"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi5"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Điện thoại :</td>
+            <td>
+                @Html.TextBox("Dienthoai", null, new { @class = "form-control" })
+                @if (ViewData["Loi6"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi6"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Địa chỉ :</td>
+            <td>
+                @Html.TextBox("Diachi", null, new { @class = "form-control" })
+                @if (ViewData["Loi7"] != null)
+                {
+                    <span class="text-danger">@ViewData["Loi7"]</span>
+                }
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Ngày sinh :</td>
+            <td>
+                <input type="date" name="Ngaysinh" class="form-control" />
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td colspan="2" align="center">
+                <input type="submit" value="Đăng ký" class="btn btn-primary" />
+            </td>
+        </tr>
+    }
+</table>
+@*//zzzzzzzzzziiiiiiiiiiiiiiiimmmmmmmmmmmmmmmmmmm*@

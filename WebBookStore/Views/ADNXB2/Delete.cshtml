@@ -1,0 +1,87 @@
+﻿@model WebBookStore.Models.NHAXUATBAN
+@{
+    ViewBag.Title = "Xóa Nhà Xuất Bản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="text-center font-weight-light my-4">Xóa Nhà Xuất Bản</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="text-danger mb-4">Bạn có chắc chắn muốn xóa nhà xuất bản này?</h4>
+            <dl class="row">
+                <dt class="col-sm-3">Tên Nhà Xuất Bản:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.TenNXB)</dd>
+                <dt class="col-sm-3">Địa Chỉ:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DiaChi)</dd>
+                <dt class="col-sm-3">Điện Thoại:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DienThoai)</dd>
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group row mt-4">
+                    <div class="col-sm-9 offset-sm-3">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        @Html.ActionLink("Quay lại", "QLNhaXuatBan", "ADNXB2", null, new { @class = "btn btn-secondary ms-2" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<style>
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+        }
+
+    .card-header {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        border-bottom: none;
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #e65100;
+            border-color: #e65100;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: all 0.3s ease;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+</style>

@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Trang Quản Lý Administration";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Trang quản lý Administration</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <h4 class="alert-heading">Chào mừng đến với hệ thống quản lý!</h4>
+                        <p>
+                            Trang quản lý này giúp các quản trị viên dễ dàng theo dõi và quản lý toàn bộ hoạt động của website sách và truyện.
+                            Tại đây, bạn có thể thực hiện các chức năng như thêm, sửa, xóa sách và truyện, quản lý người dùng, kiểm tra đơn hàng và nhiều công việc khác để đảm bảo website hoạt động hiệu quả.
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Website của chúng tôi cung cấp một bộ sưu tập phong phú các sách và truyện, từ những tác phẩm kinh điển đến những đầu sách mới nhất.
+                            Hãy sử dụng các công cụ quản lý để duy trì và nâng cao chất lượng dịch vụ của chúng tôi, mang lại trải nghiệm tốt nhất cho người dùng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-header {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        border-bottom: none;
+    }
+
+    .alert-info {
+        background-color: var(--light-color);
+        border-color: var(--secondary-color);
+        color: var(--dark-color);
+    }
+
+    .alert-heading {
+        color: var(--secondary-color);
+    }
+</style>

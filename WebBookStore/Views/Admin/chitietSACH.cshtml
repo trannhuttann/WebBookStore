@@ -1,0 +1,89 @@
+﻿@model WebBookStore.Models.SACH
+@{
+    ViewBag.Title = "Chi tiết sách";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="text-center font-weight-light my-4">CHI TIẾT SÁCH</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="~/product_imgs/@Model.AnhBia" alt="@Model.TenSach" class="img-fluid rounded" />
+                </div>
+                <div class="col-md-8">
+                    <h4>@Model.TenSach</h4>
+                    <dl class="row">
+                        <dt class="col-sm-4">Giá Bán</dt>
+                        <dd class="col-sm-8">@String.Format("{0:N0}", Model.GiaBan) VND</dd>
+                        <dt class="col-sm-4">Mô Tả</dt>
+                        <dd class="col-sm-8">@Model.MoTa</dd>
+                        <dt class="col-sm-4">Ngày Cập Nhật</dt>
+                        <dd class="col-sm-8">@Model.NgayCapNhat</dd>
+                        <dt class="col-sm-4">Số Lượng Tồn</dt>
+                        <dd class="col-sm-8">@Model.SoLuongTon</dd>
+                        <dt class="col-sm-4">Chủ Đề</dt>
+                        <dd class="col-sm-8">@Model.CHUDE.TenChuDe</dd>
+                        <dt class="col-sm-4">Nhà Xuất Bản</dt>
+                        <dd class="col-sm-8">@Model.NHAXUATBAN.TenNXB</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a href="@Url.Action("SuaSach", new { id = Model.MaSach })" class="btn btn-primary">Sửa</a>
+            <a href="@Url.Action("Sach")" class="btn btn-secondary ms-2">Quay lại danh sách</a>
+        </div>
+    </div>
+</div>
+<style>
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+        }
+
+    .card-header {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        border-bottom: none;
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #e65100;
+            border-color: #e65100;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: all 0.3s ease;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+</style>

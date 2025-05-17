@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Quên mật khẩu";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h4 style="color:red"> @ViewBag.ThongBao</h4>
+
+<table align="center">
+    <h2>QUÊN MẬT KHẨU</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>
+                Email :
+            </td>
+            <td>
+                @Html.TextBox("Email")
+                @ViewData["Loi"]
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                <input type="submit" value="Gửi mật khẩu" />
+            </td>
+        </tr>
+    }
+</table>

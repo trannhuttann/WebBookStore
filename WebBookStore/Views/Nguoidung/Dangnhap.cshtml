@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .login-container td {
+            padding: 10px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            .login-container input[type="submit"]:hover {
+                background-color: #4cae4c;
+            }
+
+        .login-container .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+            .login-container .forgot-password a {
+                color: #5bc0de;
+                text-decoration: none;
+            }
+
+                .login-container .forgot-password a:hover {
+                    text-decoration: underline;
+                }
+</style>
+<div class="login-container">
+    <h2>Đăng Nhập</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        if (ViewBag.ThongBao != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.ThongBao
+            </div>
+        }
+
+        <table>
+            <tr>
+                <td>Tên đăng nhập:</td>
+                <td>@Html.TextBox("TenDN", null, new { @class = "form-control" }) @ViewData["Loi1"]</td>
+            </tr>
+            <tr>
+                <td>Mật khẩu:</td>
+                <td>@Html.Password("Matkhau", null, new { @class = "form-control" }) @ViewData["Loi2"]</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Đăng Nhập" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="forgot-password">
+                    @Html.ActionLink("Quên mật khẩu?", "QuenMatKhau", "Nguoidung")
+                </td>
+            </tr>
+        </table>
+    }
+</div>

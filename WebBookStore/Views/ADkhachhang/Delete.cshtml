@@ -1,0 +1,85 @@
+﻿@model WebBookStore.Models.KHACHHANG
+@{
+    ViewBag.Title = "Xóa Khách Hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Xóa Khách Hàng</h3>
+                </div>
+                <div class="card-body">
+                    <h4 class="mb-4">Thông Tin Khách Hàng</h4>
+                    <dl class="row">
+                        <dt class="col-sm-3">Họ Tên</dt>
+                        <dd class="col-sm-9">@Model.HoTen</dd>
+                        <dt class="col-sm-3">Tài Khoản</dt>
+                        <dd class="col-sm-9">@Model.TaiKhoan</dd>
+                        <dt class="col-sm-3">Email</dt>
+                        <dd class="col-sm-9">@Model.Email</dd>
+                        <dt class="col-sm-3">Địa Chỉ</dt>
+                        <dd class="col-sm-9">@Model.DiachiKH</dd>
+                        <dt class="col-sm-3">Số Điện Thoại</dt>
+                        <dd class="col-sm-9">@Model.DienThoaiKH</dd>
+                        <dt class="col-sm-3">Ngày Sinh</dt>
+                        <dd class="col-sm-9">@Model.NgaySinh</dd>
+                    </dl>
+
+                    @using (Html.BeginForm("Delete", "ADKhachHang", FormMethod.Post, new { @class = "form-horizontal mt-4" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.MaKH)
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary ms-2" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-header {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        border-bottom: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .btn-secondary {
+        color: var(--dark-color);
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 0.5rem;
+    }
+</style>
